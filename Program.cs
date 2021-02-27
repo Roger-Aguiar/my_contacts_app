@@ -3,9 +3,13 @@
 namespace MyContacts
 {
     class Program
-    {
+    {        
         static void Main(string[] args)
-        {              
+        { 
+            Console.Title = "My Contacts";            
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;             
+            
             int option = Menu();
 
             while(option != 5)
@@ -15,13 +19,10 @@ namespace MyContacts
                 switch(option)
                 {
                     case 1:
-                        Insert(); 
-                        Console.Clear();                       
-                        Select();                        
+                        Insert();                                                                          
                         break;
                     case 2:
-                        Delete();                    
-                        Select();                        
+                        Delete();                                                    
                         break;
                     case 3:
                         Update();                                                  
@@ -47,7 +48,14 @@ namespace MyContacts
 
         static void Delete()
         {
-
+            Select();      
+            Console.Write("Enter the id of the contact: ");
+            int contactId = Int32.Parse(Console.ReadLine()); 
+                                    
+            Contacts contact = new Contacts(contactId);                                    
+            contact.Delete();
+            Console.Clear();
+            Console.WriteLine("Operation has been completed!");
         }
 
         static void Insert()
@@ -71,17 +79,20 @@ namespace MyContacts
             Contacts contact = new Contacts(name, city, state, phone_number);
             contact.Insert();
 
+            Console.Clear();
             Console.WriteLine("Operation has been completed!");
         }
         
         static void Select()
         {
+            Console.Clear();
             Contacts contacts = new Contacts();
             Console.WriteLine(contacts.Select());
         }
 
         static void SelectById(int id)
         {
+            Console.Clear();
             Contacts contact = new Contacts(id);
             Console.WriteLine(contact.SelectById());
         }
@@ -89,10 +100,10 @@ namespace MyContacts
         static void Update()
         {      
             Select();      
-            Console.Write("Enter the id of the contact: ");
-            int contactId = Int32.Parse(Console.ReadLine()); 
-            Console.Clear();
+            Console.Write("Enter the id of the contact: ");            
+            int contactId = Int32.Parse(Console.ReadLine());          
             SelectById(contactId);
+            
 
             Console.Write("\nEnter the name: ");
             string name = Console.ReadLine();
@@ -109,6 +120,7 @@ namespace MyContacts
             Contacts contact = new Contacts(contactId, name, city, state, phone_number);                                    
             contact.Update();
 
+            Console.Clear();
             Console.WriteLine("Operation has been completed!");
         }
     }

@@ -36,7 +36,12 @@ namespace MyContacts
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            using(contact)
+            {                                
+                var contactId = contact.Contacts.Find(ContactId);
+                contact.Contacts.Remove(contactId);                               
+                contact.SaveChanges();
+            }
         }
         
         public override void Insert()
@@ -72,8 +77,8 @@ namespace MyContacts
             string output_contact;
 
             using(contact)
-            {                
-                var contactId = contact.Contacts.OrderBy(c => c.ContactId).First();
+            {     
+                var contactId = contact.Contacts.Find(ContactId);                           
                 output_contact = "Name: " + contactId.Name + "\nCity: " + contactId.City +
                                     "\nState: " + contactId.State + "\nPhone number: " + contactId.Phone_number + "\n";
             }
@@ -84,7 +89,7 @@ namespace MyContacts
         {
             using(contact)
             {                                
-                var contactId = contact.Contacts.First();
+                var contactId = contact.Contacts.Find(ContactId);
                 contactId.Name = Name;
                 contactId.City = City;
                 contactId.State = State;
