@@ -1,4 +1,4 @@
-public abstract class ContactsTable
+public abstract class ContactsOperations
 {
     private int contactId;
     private string name;
