@@ -12,8 +12,22 @@ namespace MyContacts
 
         }
         
+        public Contacts(int contactId)
+        {
+            ContactId = contactId;
+        }
+
         public Contacts(string name, string city, string state, string phone_number)
         {
+            Name = name;
+            City = city;
+            State = state;
+            Phone_number = $"{long.Parse(phone_number):(00)0-0000-0000}";
+        }
+
+        public Contacts(int contactId, string name, string city, string state, string phone_number)
+        {
+            ContactId = contactId;
             Name = name;
             City = city;
             State = state;
@@ -45,22 +59,39 @@ namespace MyContacts
                 var contactList = contact.Contacts.OrderBy(contacts => contacts.Name);
                 foreach (var currentContact in contactList)
                 {
-                    output_contacts += "Name: " + currentContact.Name + "\nCity: " + currentContact.City + 
-                                       "\nState: " + currentContact.State + "\nPhone number: " + currentContact.Phone_number +
-                                       "\n=============================================\n";                
+                    output_contacts += "Id: " + currentContact.ContactId + "\nName: " + currentContact.Name + 
+                                       "\nCity: " + currentContact.City + "\nState: " + currentContact.State + 
+                                       "\nPhone number: " + currentContact.Phone_number + "\n=============================================\n";                
                 }
             }
             return output_contacts;
         }
 
-        public override string ToString()
+        public override string SelectById()
         {
-            return base.ToString();
+            string output_contact;
+
+            using(contact)
+            {                
+                var contactId = contact.Contacts.OrderBy(c => c.ContactId).First();
+                output_contact = "Name: " + contactId.Name + "\nCity: " + contactId.City +
+                                    "\nState: " + contactId.State + "\nPhone number: " + contactId.Phone_number + "\n";
+            }
+            return output_contact;
         }
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            using(contact)
+            {                                
+                var contactId = contact.Contacts.First();
+                contactId.Name = Name;
+                contactId.City = City;
+                contactId.State = State;
+                contactId.Phone_number = Phone_number;
+               
+                contact.SaveChanges();
+            }
         }
     }
 }

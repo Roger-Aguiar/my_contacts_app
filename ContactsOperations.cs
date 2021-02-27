@@ -16,5 +16,6 @@ public abstract class ContactsOperations
     public abstract void Delete();
     public abstract void Update();
     public abstract string Select();
+    public abstract string SelectById();
 
 }

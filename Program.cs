@@ -24,8 +24,7 @@ namespace MyContacts
                         Select();                        
                         break;
                     case 3:
-                        Update();                        
-                        Select();                        
+                        Update();                                                  
                         break;
                     case 4:
                         Select();                        
@@ -74,16 +73,43 @@ namespace MyContacts
 
             Console.WriteLine("Operation has been completed!");
         }
-
+        
         static void Select()
         {
             Contacts contacts = new Contacts();
             Console.WriteLine(contacts.Select());
         }
 
-        static void Update()
+        static void SelectById(int id)
         {
+            Contacts contact = new Contacts(id);
+            Console.WriteLine(contact.SelectById());
+        }
 
+        static void Update()
+        {      
+            Select();      
+            Console.Write("Enter the id of the contact: ");
+            int contactId = Int32.Parse(Console.ReadLine()); 
+            Console.Clear();
+            SelectById(contactId);
+
+            Console.Write("\nEnter the name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter the city: ");
+            string city = Console.ReadLine();
+
+            Console.Write("Enter the state: ");
+            string state = Console.ReadLine();
+
+            Console.Write("Enter the phone number (Just number):");
+            string phone_number = Console.ReadLine();
+            
+            Contacts contact = new Contacts(contactId, name, city, state, phone_number);                                    
+            contact.Update();
+
+            Console.WriteLine("Operation has been completed!");
         }
     }
 }
