@@ -1,6 +1,6 @@
 namespace MyContacts
 {
-    public class ContactsModel
+    public class Contact
     {
         public int ContactId{get; set;}
         public string Name{get; set;}
