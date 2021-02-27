@@ -15,6 +15,6 @@ public abstract class ContactsOperations
     public abstract void Insert();
     public abstract void Delete();
     public abstract void Update();
-    public abstract void Select();
+    public abstract string Select();
 
 }
