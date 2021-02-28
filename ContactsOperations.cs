@@ -1,10 +1,10 @@
 public abstract class ContactsOperations
 {
-    public int ContactId { get; set; }
-    public string Name { get; set; }
-    public string City { get; set; }
-    public string State { get; set; }
-    public string Phone_number { get; set; }
+    protected int ContactId { get; set; }
+    protected string Name { get; set; }
+    protected string City { get; set; }
+    protected string State { get; set; }
+    protected string Phone_number { get; set; }
 
     protected ContactsOperations(){}
 
@@ -12,7 +12,7 @@ public abstract class ContactsOperations
     {
         ContactId = contactId;
     }
-    
+
     protected ContactsOperations(int contactId, string name, string city, string state, string phone_number)
     {
         ContactId = contactId;
