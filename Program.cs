@@ -23,10 +23,10 @@ namespace MyContacts
                     case 1:
                         run.Insert();                                                                          
                         break;
-                    /*case 2:
+                    case 2:
                         run.Delete();                                                    
                         break;
-                    case 3:
+                    /*case 3:
                         run.Update();                                                  
                         break;*/
                     case 4:
@@ -48,17 +48,17 @@ namespace MyContacts
             return Int32.Parse(Console.ReadLine());
         }
 
-        /*public void Delete()
+        public void Delete()
         {
             Select();      
             Console.Write("Enter the id of the contact: ");
-            int contactId = Int32.Parse(Console.ReadLine()); 
+            contact.ContactId = Int32.Parse(Console.ReadLine()); 
                                     
-            Contacts contact = new Contacts(contactId);                                    
-            contact.Delete();
+            //Contacts contact = new Contacts(contactId);                                    
+            contact.Delete();//Problem here
             Console.Clear();
             Console.WriteLine("Operation has been completed!");
-        }*/
+        }
 
         public void Insert()
         {

@@ -10,8 +10,9 @@ namespace MyContacts
         public override void Delete()
         {
             using(contact)
-            {                                
-                var contactId = contact.Contacts.Find(ContactId);
+            {   
+                var contactId = contact.Contacts.Find(23);                             
+                //var contactId = contact.Contacts.Find(ContactId);
                 contact.Contacts.Remove(contactId);                               
                 contact.SaveChanges();
             }
