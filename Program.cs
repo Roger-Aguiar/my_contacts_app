@@ -4,13 +4,15 @@ namespace MyContacts
 {
     class Program
     {        
+        Contacts contact = new Contacts();
         static void Main(string[] args)
         { 
+            Program run = new Program();
             Console.Title = "My Contacts";            
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.White;             
             
-            int option = Menu();
+            int option = run.Menu();
 
             while(option != 5)
             {
@@ -19,23 +21,23 @@ namespace MyContacts
                 switch(option)
                 {
                     case 1:
-                        Insert();                                                                          
+                        run.Insert();                                                                          
                         break;
-                    case 2:
-                        Delete();                                                    
+                    /*case 2:
+                        run.Delete();                                                    
                         break;
                     case 3:
-                        Update();                                                  
-                        break;
+                        run.Update();                                                  
+                        break;*/
                     case 4:
-                        Select();                        
-                        break;                    
+                        run.Select();                        
+                        break;                   
                 }
-                option = Menu();
+                option = run.Menu();
             };
         }       
 
-        static int Menu()
+        public int Menu()
         {
             Console.WriteLine("1 - Insert new contact");
             Console.WriteLine("2 - Delete contact");
@@ -46,7 +48,7 @@ namespace MyContacts
             return Int32.Parse(Console.ReadLine());
         }
 
-        static void Delete()
+        /*public void Delete()
         {
             Select();      
             Console.Write("Enter the id of the contact: ");
@@ -56,48 +58,47 @@ namespace MyContacts
             contact.Delete();
             Console.Clear();
             Console.WriteLine("Operation has been completed!");
-        }
+        }*/
 
-        static void Insert()
+        public void Insert()
         {
             Console.Clear();
             Console.WriteLine("CONTACTS DATABASE\n");
             Console.WriteLine("Enter the following data:\n");
 
             Console.Write("Enter the name: ");
-            string name = Console.ReadLine();
-
+            contact.Name = Console.ReadLine();
+           
             Console.Write("Enter the city: ");
-            string city = Console.ReadLine();
-
+            contact.City = Console.ReadLine();
+            
             Console.Write("Enter the state: ");
-            string state = Console.ReadLine();
-
+            contact.State = Console.ReadLine();
+            
             Console.Write("Enter the phone number (Just number):");
             string phone_number = Console.ReadLine();
+            contact.Phone_number = $"{long.Parse(phone_number):(00)0-0000-0000}";
             
-            Contacts contact = new Contacts(name, city, state, phone_number);
             contact.Insert();
 
             Console.Clear();
-            Console.WriteLine("Operation has been completed!");
+            Console.WriteLine("Operation has been completed!");        
         }
         
-        static void Select()
+        public void Select()
         {
-            Console.Clear();
-            Contacts contacts = new Contacts();
-            Console.WriteLine(contacts.Select());
+            Console.Clear();            
+            Console.WriteLine(contact.Select());
         }
 
-        static void SelectById(int id)
+        /*public void SelectById(int id)
         {
             Console.Clear();
             Contacts contact = new Contacts(id);
             Console.WriteLine(contact.SelectById());
-        }
+        }*/
 
-        static void Update()
+        /*public void Update()
         {      
             Select();      
             Console.Write("Enter the id of the contact: ");            
@@ -122,6 +123,6 @@ namespace MyContacts
 
             Console.Clear();
             Console.WriteLine("Operation has been completed!");
-        }
+        }*/
     }
 }

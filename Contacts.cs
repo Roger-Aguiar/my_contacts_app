@@ -6,17 +6,7 @@ namespace MyContacts
     class Contacts : ContactsOperations
     {
         DatabaseContacts contact = new DatabaseContacts();
-
-        public Contacts(){}
         
-        public Contacts(int contactId) :base(contactId){}
-        
-        public Contacts(string name, string city, string state, string phone_number)
-        : base(name, city, state, $"{long.Parse(phone_number):(00)0-0000-0000}"){}
-
-        public Contacts(int contactId, string name, string city, string state, string phone_number)
-        : base(contactId, name, city, state, phone_number){}
-
         public override void Delete()
         {
             using(contact)
