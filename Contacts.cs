@@ -50,6 +50,7 @@ namespace MyContacts
             return output_contacts;
         }
 
+        //This method is being refactored.
         public override string SelectById()
         {
             string output_contact;

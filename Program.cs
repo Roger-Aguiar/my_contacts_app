@@ -26,9 +26,9 @@ namespace MyContacts
                     case 2:
                         run.Delete();                                                    
                         break;
-                    /*case 3:
+                    case 3:
                         run.Update();                                                  
-                        break;*/
+                        break;
                     case 4:
                         run.Select();                        
                         break;                
@@ -90,38 +90,37 @@ namespace MyContacts
             Console.WriteLine(contact.Select());
         }
 
-        /*public void SelectById(int id)
+        //This method is being refactored.
+        public void SelectById(int id)
         {
             Console.Clear();
             Contacts contact = new Contacts(id);
             Console.WriteLine(contact.SelectById());
-        }*/
+        }
 
-        /*public void Update()
+        public void Update()
         {      
             Select();      
-            Console.Write("Enter the id of the contact: ");            
-            int contactId = Int32.Parse(Console.ReadLine());          
-            SelectById(contactId);
-            
+            Console.Write("Enter the id of the contact: ");  
+            Contacts updateContact = new Contacts(Int32.Parse(Console.ReadLine()));                     
 
             Console.Write("\nEnter the name: ");
-            string name = Console.ReadLine();
+            updateContact.Name = Console.ReadLine();
 
             Console.Write("Enter the city: ");
-            string city = Console.ReadLine();
+            updateContact.City = Console.ReadLine();
 
             Console.Write("Enter the state: ");
-            string state = Console.ReadLine();
+            updateContact.State = Console.ReadLine();
 
             Console.Write("Enter the phone number (Just number):");
             string phone_number = Console.ReadLine();
-            
-            Contacts contact = new Contacts(contactId, name, city, state, phone_number);                                    
-            contact.Update();
+            updateContact.Phone_number = $"{long.Parse(phone_number):(00)0-0000-0000}";
+                                                
+            updateContact.Update();
 
             Console.Clear();
             Console.WriteLine("Operation has been completed!");
-        }*/
+        }
     }
 }
