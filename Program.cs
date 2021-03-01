@@ -31,7 +31,7 @@ namespace MyContacts
                         break;*/
                     case 4:
                         run.Select();                        
-                        break;                   
+                        break;                
                 }
                 option = run.Menu();
             };
@@ -52,10 +52,9 @@ namespace MyContacts
         {
             Select();      
             Console.Write("Enter the id of the contact: ");
-            contact.ContactId = Int32.Parse(Console.ReadLine()); 
-                                    
-            //Contacts contact = new Contacts(contactId);                                    
-            contact.Delete();//Problem here
+                                               
+            Contacts deleteContact = new Contacts(Int32.Parse(Console.ReadLine()));                                    
+            deleteContact.Delete();
             Console.Clear();
             Console.WriteLine("Operation has been completed!");
         }

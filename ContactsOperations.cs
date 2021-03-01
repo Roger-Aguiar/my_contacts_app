@@ -6,6 +6,13 @@ public abstract class ContactsOperations
     public string State { get; set; }
     public string Phone_number { get; set; }
     
+    protected ContactsOperations(){}
+    
+    protected ContactsOperations(int contactId)
+    {
+        ContactId = contactId;
+    }
+
     public abstract void Insert();
     public abstract void Delete();
     public abstract void Update();

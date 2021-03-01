@@ -7,12 +7,15 @@ namespace MyContacts
     {
         DatabaseContacts contact = new DatabaseContacts();
         
+        public Contacts(){}
+
+        public Contacts(int contactId) :base(contactId){}
+        
         public override void Delete()
         {
             using(contact)
             {   
-                var contactId = contact.Contacts.Find(23);                             
-                //var contactId = contact.Contacts.Find(ContactId);
+                var contactId = contact.Contacts.Find(ContactId);
                 contact.Contacts.Remove(contactId);                               
                 contact.SaveChanges();
             }
@@ -40,7 +43,8 @@ namespace MyContacts
                 {
                     output_contacts += "Id: " + currentContact.ContactId + "\nName: " + currentContact.Name + 
                                        "\nCity: " + currentContact.City + "\nState: " + currentContact.State + 
-                                       "\nPhone number: " + currentContact.Phone_number + "\n=============================================\n";                
+                                       "\nPhone number: " + currentContact.Phone_number + 
+                                       "\n=============================================\n";                
                 }
             }
             return output_contacts;
@@ -54,7 +58,7 @@ namespace MyContacts
             {     
                 var contactId = contact.Contacts.Find(ContactId);                           
                 output_contact = "Name: " + contactId.Name + "\nCity: " + contactId.City +
-                                    "\nState: " + contactId.State + "\nPhone number: " + contactId.Phone_number + "\n";
+                                 "\nState: " + contactId.State + "\nPhone number: " + contactId.Phone_number + "\n";
             }
             return output_contact;
         }
